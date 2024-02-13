@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, EffectRef, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SignalContainerComponent } from './components/signal-container/signal-container.component';
 
@@ -15,10 +15,15 @@ export class AppComponent {
   counter = signal(0);
 
   derivedCounter = computed(() => this.counter() * 10);
+  effectRef: EffectRef;
 
   constructor() {
     const readOnlySignal = this.counter.asReadonly();
-    effect(() => {
+    this.effectRef = effect((onCleanup) => {
+
+      onCleanup(() => {
+        console.log(`cleanup occured`);
+      });
       const counterValue = this.counter();
       const derivedCounter = this.derivedCounter();
       console.log(`Counter: ${counterValue}, 
@@ -34,5 +39,9 @@ export class AppComponent {
     // let val = this.counter();
     // this.counter.set(++val);
     this.counter.update(val => val + 1);
+  }
+
+  cleanUp() {
+    this.effectRef.destroy();
   }
 }

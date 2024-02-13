@@ -1,4 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
+import { SignalDataService } from '../../services/signal-data.service';
 
 @Component({
   selector: 'app-signal-container',
@@ -8,6 +9,9 @@ import { Component, computed, signal } from '@angular/core';
   styleUrl: './signal-container.component.scss'
 })
 export class SignalContainerComponent {
+
+  inputCounter = input<number>();
+  
   counter = signal(0);
 
   employees = signal({
@@ -17,9 +21,13 @@ export class SignalContainerComponent {
 
   places = signal(['Giridih', 'Dhanbad', 'Deoghar']);  
 
-  derivedCounter = computed(() => this.counter() * 10);
+  derivedCounter = computed(() => {
+    const counter = this.signalService.counter();
+
+    return counter;
+  });
   
-  constructor() {
+  constructor( private signalService: SignalDataService) {
     
   }
 
@@ -30,5 +38,9 @@ export class SignalContainerComponent {
     });
 
     this.places.update(val => [...val, 'Telkhara']);
+  }
+
+  incrementData() {
+    this.signalService.increment();
   }
 }

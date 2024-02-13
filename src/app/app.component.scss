@@ -1,16 +1,28 @@
+@mixin buttonCode() {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
 .courses {
     display: flex;
     place-content: center;
     flex-direction: column;
     justify-content: space-around;
-    height: 150px;
+    height: 250px;
+    align-items: center;
 }
 #increment {
-    width: 100px;
-    height: 50px;
-    border-radius: 5px;
+    @include buttonCode;
     color: #fff;
     background: rgb(85, 85, 218);
-    border: none;
-    cursor: pointer;
 }
+
+#cleanup {
+    @include buttonCode;
+    color: #888888;
+    background: rgb(225, 225, 235);   
+}
+

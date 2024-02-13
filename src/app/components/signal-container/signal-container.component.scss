@@ -2,17 +2,25 @@
     display: flex;
     place-content: center;
     justify-content: space-evenly;
-    height: 150px;
+    height: 250px;
     flex-direction: column;
     align-items: center;
 }
 
-#changeBtn {
+@mixin btn($color) {
     width: 100px;
     height: 50px;
     border-radius: 5px;
     color: #fff;
-    background: rgb(163, 55, 73);
     border: none;
     cursor: pointer;
+    background: $color;
+}
+
+#changeBtn {   
+    @include btn(rgb(163, 55, 73));    
+}
+
+#incrementBtn {
+    @include btn(rgb(15, 105, 50));    
 }

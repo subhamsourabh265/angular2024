@@ -1,5 +1,7 @@
 <main class="employees">
     <span> Employee Name: {{ employees().name }}</span>
     <span> Place: {{ places().join(', ') }}</span>
+    <span> counter value: {{ derivedCounter() }}</span>
     <button id="changeBtn" (click)="changeData()">change</button>
+    <button id="incrementBtn" (click)="incrementData()">increment value</button>
 </main>
