@@ -1,16 +1,18 @@
-.courses {
+.employees {
     display: flex;
     place-content: center;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 150px;
+    flex-direction: column;
+    align-items: center;
 }
-#increment {
+
+#changeBtn {
     width: 100px;
     height: 50px;
     border-radius: 5px;
     color: #fff;
-    background: rgb(85, 85, 218);
+    background: rgb(163, 55, 73);
     border: none;
     cursor: pointer;
 }

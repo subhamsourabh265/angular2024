@@ -334,3 +334,10 @@
 
 
 <router-outlet />
+
+<main class="courses">
+  <div> Counter Value: {{counter()}} </div>
+  <span> Computed Value: {{ derivedCounter() }}</span>
+  <button id='increment' (click)="increment()">Increment</button>
+</main>
+<app-signal-container></app-signal-container>
